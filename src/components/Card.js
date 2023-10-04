@@ -1,14 +1,16 @@
 import React from "react";
 import "../styles/card.css";
 
-function Card({ card, handleChoice }) {
-  const handleClick = (card) => {
-    handleChoice(card);
+function Card({ card, handleChoice, flipped, disabled }) {
+  const handleClick = () => {
+    if (!disabled) {
+      handleChoice(card);
+    }
   };
 
   return (
     <div>
-      <div>
+      <div className={flipped ? "flipped" : ""}>
         <img className="front" src={card.src} alt="card-front" />
         <img
           className="back"
